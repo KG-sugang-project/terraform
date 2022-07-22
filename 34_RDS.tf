@@ -3,10 +3,10 @@ resource "aws_db_instance" "team_rds" {
     engine = "mysql"
     engine_version = "8.0.20"
     instance_class = "db.t2.micro"
-    name = "teamrds"
+    name = "sugang"
     username = "root"
     password = "It12345!"
-    identifier = "teamrds"
+    identifier = "sugang"
     skip_final_snapshot = true
     db_subnet_group_name = "az-rds-group"
     vpc_security_group_ids = ["${aws_security_group.DB-sg.id}"]
