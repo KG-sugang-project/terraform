@@ -14,3 +14,32 @@ resource "aws_autoscaling_group" "ASG_was" {
   launch_configuration      = aws_launch_configuration.ASG_was_lacf.name  ## 시작 구성
   vpc_zone_identifier       = [aws_subnet.WAS_a.id, aws_subnet.WAS_c.id] 
 }
+
+
+## 정책
+resource "aws_autoscaling_policy" "was_target_tracking_policy" {
+  name = "was-target-tracking-policy"
+  policy_type = "TargetTrackingScaling"  ## 대상 추적 크기 조정 정책
+  autoscaling_group_name = "${aws_autoscaling_group.ASG_was.name}"
+  estimated_instance_warmup = 200  ## 새로 시작한 인스턴스가 CloudWatch 지표에 기여할 때까지의 예상 시간
+
+## 정책 인수
+target_tracking_configuration {
+  predefined_metric_specification {
+    predefined_metric_type = "ASGAverageCPUUtilization" ## 평균 CPU 사용률
+  }
+  target_value = 40.0  ## 대상값
+}
+# target_tracking_configuration {
+#   customized_metric_specification {
+#     metric_dimension {
+#       name = "fuga"
+#       value = "fuga"
+#     }
+#     metric_name = "hoge"
+#     namespace = "hoge"
+#     statistic = "Average"
+#   }
+#   target_value = 40.0
+# }
+}
