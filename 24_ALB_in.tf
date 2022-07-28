@@ -9,6 +9,3 @@ resource "aws_lb" "ALB_in" {
   }
 }
 
-# output "dns_name" {
-#   value = aws_lb.ALB_ex.dns_name
-# }

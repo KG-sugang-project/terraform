@@ -1,6 +1,6 @@
 resource "aws_lb_listener" "ALB_in_listener" {
   load_balancer_arn = aws_lb.ALB_in.arn        ## ALB에 리스너 연결
-  port              = "80"
+  port              = "3000"
   protocol          = "HTTP"
 
   default_action {

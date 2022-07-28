@@ -8,7 +8,3 @@ resource "aws_lb" "ALB_ex" {
     name = "ALB-ex"
   }
 }
-
-# output "dns_name" {
-#   value = aws_lb.ALB_ex.dns_name
-# }

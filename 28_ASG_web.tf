@@ -1,8 +1,3 @@
-# resource "aws_placement_group" "jylee_pg" {  ## 배치그룹
-#   name     = "jylee-pg"
-#   strategy = "cluster" ## 배치전략 단위 : 짧은 네트워크 지연 시간, 높은 네트워크 처리량을 요하는 애플리케이션에 권장
-# }
-
 resource "aws_autoscaling_group" "ASG_web" {
   name                      = "ASG-web"
   max_size                  = 10
@@ -29,16 +24,4 @@ target_tracking_configuration {
   }
   target_value = 40.0  ## 대상값
 }
-# target_tracking_configuration {
-#   customized_metric_specification {
-#     metric_dimension {
-#       name = "fuga"
-#       value = "fuga"
-#     }
-#     metric_name = "hoge"
-#     namespace = "hoge"
-#     statistic = "Average"
-#   }
-#   target_value = 40.0
-# }
 }
