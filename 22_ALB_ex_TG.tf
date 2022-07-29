@@ -16,4 +16,9 @@ resource "aws_lb_target_group" "ALB_ex_tg" {
     protocol            = "HTTP"
     timeout             = 2 ## 응답없음 상태가 상태확인에 실패했음을 의미하는 시간
   }
+  ## 세션 유지
+  stickiness {
+    type            = "lb_cookie"
+    cookie_duration = 600 ## 10분
+  }
 }
